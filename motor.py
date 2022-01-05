@@ -4,7 +4,7 @@
 import RPi.GPIO as GPIO
 from time import sleep 
 # Using the common header naming 
-GPIO.setmode(GRIO.Board)
+GPIO.setmode(GPIO.Board)
 GPIO.setwarnings(False)
 
 class Motor():
