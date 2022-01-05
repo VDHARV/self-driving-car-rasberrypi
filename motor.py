@@ -4,12 +4,13 @@
 import RPi.GPIO as GPIO
 from time import sleep 
 # Using the common header naming 
-GPIO.setmode(GPIO.Board)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 class Motor():
-    def __init__(self, EnaA, In1A, In2A, In1B, In2B):
-        self.Ena = EnaA
+    def __init__(self, EnaA, EnaB, In1A, In2A, In1B, In2B):
+        self.EnaA = EnaA
+        self.EnaB = EnaB
         self.In1A = In1A
         self.In2A = In2A
         self.In1B = In1B
@@ -24,10 +25,10 @@ class Motor():
         GPIO.setup(self.In2B, GPIO.OUT)
         # Setting up the PWM pin this is used for providing the power to the motor 
         
-        pwmA = GPIO.PWM(self.EnaA, 100)
-        pwmA.start(0)
-        pwmB = GPIO.PWM(self.EnaB, 100)
-        pwmB.start(0)
+        self.pwmA = GPIO.PWM(self.EnaA, 100)
+        self.pwmA.start(0)
+        self.pwmB = GPIO.PWM(self.EnaB, 100)
+        self.pwmB.start(0)
 
     def move(self, t = 0, turn = 0, speed = 0.5):
         speed *= 100
