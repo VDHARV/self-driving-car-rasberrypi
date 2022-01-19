@@ -17,9 +17,9 @@ def getKey(key):
     
 def main():
     '''This is used to drive the code'''
-    if getKey('a'):
+    if getKey('LEFT'):
         print("A was pressed")
-    if getKey('b'):
+    if getKey('RIGHT'):
         print('B was pressed')
 
 if __name__ == "__main__":
