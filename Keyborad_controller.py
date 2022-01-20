@@ -1,4 +1,6 @@
 import pygame
+from motor import Motor
+
 
 def pygame_setup():
     '''This Function helps to setup the pygame'''
@@ -17,12 +19,27 @@ def getKey(key):
     
 def main():
     '''This is used to drive the code'''
-    if getKey('LEFT'):
-        print("A was pressed")
-    if getKey('RIGHT'):
-        print('B was pressed')
+    motor1 = Motor(32, 33, 11, 13, 15, 16)
+    
+    if getKey('UP'):
+        motor1.move(1,0,0.5)
+        #print("HI")
+    elif getKey('DOWN'):
+        motor1.move(1,0,-0.5)
+        #print("HI2")
+    elif getKey('LEFT'):
+        motor1.move(1,-1,0.5)
+        #print("HI3")
+    elif getKey('RIGHT'):
+        motor1.move(1,1,0.5)
+        #print("HI4")
+        
+    else:
+        motor1.stop(0.1)
+    
 
 if __name__ == "__main__":
     pygame_setup()
+    
     while True:
         main()

@@ -63,23 +63,19 @@ class Motor():
         else:
             GPIO.output(self.In1B, GPIO.HIGH)
             GPIO.output(self.In2B, GPIO.LOW)
-
+        sleep(t)
     
     def stop(self, t = 0):
         self.pwmA.ChangeDutyCycle(0)
         self.pwmB.ChangeDutyCycle(0)
+        sleep(t)
 
        
 # The naming conventions are as per Board scheme 
 
 
 
-def main():
-    motor1 = Motor(11, 13, 15, 16, 18, 22)    
-    motor1.move(60, 2)
-    motor1.stop(2)
-    motor1.move(60, 2)
-    motor1.stop(2)
 
-if __name__ == "__main__":
-    main()
+
+
+
