@@ -1,5 +1,6 @@
 import cv2
-import numpy as np 
+import numpy as np
+from pygame import image 
 import utils
 
 def get_curve(img):
@@ -11,9 +12,11 @@ def get_curve(img):
     img_warp = utils.warp_img(img_thres, points, w, h)
     img_warped_points = utils.draw_points(img, points)
     
+    base_point, img_hist = utils.get_histogram(img_warp, display=True)
     cv2.imshow("thres", img_thres)
     cv2.imshow("wrap", img_warp)
     cv2.imshow("warp points", img_warped_points)
+    cv2.imshow("warp points", img_hist)
     
     return 
     

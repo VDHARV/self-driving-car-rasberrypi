@@ -1,4 +1,5 @@
 import cv2
+from cv2 import FlannBasedMatcher
 import numpy as np
 
 def thresholding(img):
@@ -45,7 +46,7 @@ def val_trackbar(wT= 480, hT = 240):
     heightTop = cv2.getTrackbarPos("Height Top", "Trackbars")
     widthBottom = cv2.getTrackbarPos("Width Bottom", "Trackbars")
     heightBottom = cv2.getTrackbarPos("Height Bottom", "Trackbars")
-    print(widthTop, heightTop, widthBottom, heightBottom)
+    #print(widthTop, heightTop, widthBottom, heightBottom)
     points = np.float32([(widthTop, heightTop), (wT - widthTop, heightTop), 
                         (widthBottom, heightBottom), (wT - widthBottom, heightBottom)])
 
@@ -58,3 +59,25 @@ def draw_points(img, points):
         cv2.circle(img, (int(points[x][0]), int(points[x][1])), 15, (0,0,255), cv2.FILLED)
         
     return img
+
+def get_histogram(img, percent=0.1, display = False):
+    '''This function performs the pixel summation so that curve can be extracted '''
+
+    hist_values = np.sum(img, axis=0)
+    #print(hist_values)
+    max_val = np.max(hist_values)
+    min_val = max_val*percent
+    index_array = np.where(hist_values >= min_val)
+    base_point = int(np.average(index_array))
+    # the base point value suggests weather to turn right or left
+    print(base_point)
+    if display:
+        img_hist = np.zeros((img.shape[0], img.shape[1], 3), np.uint8)
+        for x, intensity in enumerate(hist_values):
+            cv2.line(img_hist, (x, img.shape[0]), (x, int(img.shape[0] - intensity // 255)), (255, 0, 255), 1)
+            cv2.circle(img_hist, (base_point, img.shape[0]), 20, (0, 255, 255), cv2.FILLED)
+        return base_point, img_hist
+
+    return base_point
+
+        
