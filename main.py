@@ -10,7 +10,7 @@ motor = Motor(32, 33, 11, 13, 15, 16)
 
 def main():
     
-    img = webcam.getImg()
+    img = webcam.getImg(display=True)
     curve_val = get_curve(img, display=1)
     
     sen = 1.3
@@ -31,7 +31,7 @@ def main():
             curve_val = 0
     
     motor.move(0.05, curve_val*sen, 0.2)
-    #cv2.waitkey(1)
+    cv2.waitKey(1)
     
 
 
