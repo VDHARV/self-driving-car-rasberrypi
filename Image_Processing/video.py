@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from pygame import image 
-import utils
+import Image_Processing.utils as utils
 curve_list = []
 avg_val = 10
 
