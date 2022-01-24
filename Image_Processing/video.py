@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
-from pygame import image 
-import Image_Processing.utils as utils
+#from pygame import image 
+#import Image_Processing.utils as utils
+import utils as utils
 curve_list = []
 avg_val = 10
 
@@ -15,8 +16,8 @@ def get_curve(img, display = 2):
     img_warp = utils.warp_img(img_thres, points, w, h)
     img_warped_points = utils.draw_points(img, points)
     
-    mid_point, img_hist = utils.get_histogram(img_warp, display=True, percent=0.5, region=4)
-    curve_avg, img_hist = utils.get_histogram(img_warp, display=True, percent=0.9)
+    mid_point, img_hist = utils.get_histogram(img_warp, display=True, percent=0.9, region=4)
+    curve_avg, img_hist = utils.get_histogram(img_warp, display=True, percent=0.48)
     curve_raw = curve_avg - mid_point
     
     curve_list.append(curve_raw)
@@ -73,8 +74,8 @@ def get_curve(img, display = 2):
 
 if __name__ == "__main__":
     
-    video = cv2.VideoCapture('Image_Processing/Test1.avi')
-    initial_trackbar_val = [122, 107, 56, 219]
+    video = cv2.VideoCapture('Image_Processing/l2.avi')
+    initial_trackbar_val = [131, 176, 85, 240]
     utils.initialize_trackbar(initial_trackbar_val)
     frameCounter = 0
     while True:

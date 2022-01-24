@@ -22,16 +22,16 @@ def main():
     motor1 = Motor(32, 33, 11, 13, 15, 16)
     
     if getKey('UP'):
-        motor1.move(1,0,0.5)
+        motor1.move(0.1,0,1)
         #print("HI")
     elif getKey('DOWN'):
-        motor1.move(1,0,-0.5)
+        motor1.move(0.1,0,-1)
         #print("HI2")
     elif getKey('LEFT'):
-        motor1.move(1,-1,0.5)
+        motor1.move(0.1,-0.5,0.5)
         #print("HI3")
     elif getKey('RIGHT'):
-        motor1.move(1,1,0.5)
+        motor1.move(0.1,0.5,0.5)
         #print("HI4")
         
     else:

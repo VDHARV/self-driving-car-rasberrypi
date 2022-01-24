@@ -20,7 +20,7 @@ cv2.createTrackbar("SAT Max", "HSV", 255, 255, empty)
 cv2.createTrackbar("VALUE Min", "HSV", 0, 255, empty)
 cv2.createTrackbar("VALUE Max", "HSV", 255, 255, empty)
  
-cap = cv2.VideoCapture('Image_Processing/Test1.avi')
+cap = cv2.VideoCapture('Image_Processing/l2.avi')
 frameCounter = 0
  
 while True:

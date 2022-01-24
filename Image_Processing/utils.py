@@ -7,8 +7,8 @@ def thresholding(img):
     
     # Here we have converted BGR to HSv fromat because it is required to do thresholding 
     img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    lower = np.array([99,0,113])
-    upper = np.array([160,255,255])
+    lower = np.array([67,0,153]) #HUE min, VAL min
+    upper = np.array([159,255,255]) #HUE max
     masked = cv2.inRange(img_hsv, lower, upper)
     
     return masked
