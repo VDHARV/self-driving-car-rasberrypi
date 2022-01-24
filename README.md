@@ -1,4 +1,4 @@
-# Self Driving Car Using Rasberry PI
+# Self Driving Car Using Raspberry PI
 
 This is a basic project created by the VDHARV team on self driving car. We have used following techniques for creating this:
 
