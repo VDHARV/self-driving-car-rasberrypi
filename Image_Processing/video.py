@@ -74,7 +74,7 @@ def get_curve(img, display = 2):
 
 if __name__ == "__main__":
     
-    video = cv2.VideoCapture('Image_Processing/l2.avi')
+    video = cv2.VideoCapture('Image_Processing/6.avi')
     initial_trackbar_val = [131, 176, 85, 240]
     utils.initialize_trackbar(initial_trackbar_val)
     frameCounter = 0
