@@ -66,10 +66,12 @@ def get_histogram(img, percent=0.1, display = False, region = 1):
     '''This function performs the pixel summation so that curve can be extracted '''
     
     if region == 1:
+        print(img.shape)
         hist_values = np.sum(img, axis=0)
     else:
+        # here we do it for the the region so if 2 is value of region height/2 is selected as the start value
         hist_values = np.sum(img[img.shape[0] // region:,:], axis=0)
-    #print(hist_values)
+    print(hist_values)
     max_val = np.max(hist_values)
     min_val = max_val*percent
     index_array = np.where(hist_values >= min_val)
@@ -86,6 +88,7 @@ def get_histogram(img, percent=0.1, display = False, region = 1):
     return base_point
 
 def stack(scale,imgArray):
+    '''This is the script that is created for stacking all the output frames into one window'''
     rows = len(imgArray)
     cols = len(imgArray[0])
     rowsAvailable = isinstance(imgArray[0], list)
